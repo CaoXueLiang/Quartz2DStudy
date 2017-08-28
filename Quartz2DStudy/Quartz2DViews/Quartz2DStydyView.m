@@ -58,7 +58,7 @@
     //[self superpositionPattern];
     
     /*11.填充模式*/
-    //[self coloredFillPattern];
+    [self coloredFillPattern];
     //[self unColoredFillPattern];
     
     /*12.上下文变换*/
@@ -104,12 +104,26 @@
     CGContextSetFillColorWithColor(context, [UIColor yellowColor].CGColor);
     CGContextDrawPath(context, kCGPathFillStroke);
     
-    //绘制二次贝塞尔曲线
+    /*绘制二次贝塞尔曲线
+     c:图形上下文
+     cpx:控制点x坐标
+     cpy:控制点y坐标
+     x:结束点x坐标
+     y:结束点y坐标
+     */
     CGContextMoveToPoint(context, 50, 450);
     CGContextAddQuadCurveToPoint(context, 150, 300, 250, 450);
     CGContextDrawPath(context, kCGPathStroke);
     
-    //绘制三次贝塞尔曲线
+    /*绘制三次贝塞尔曲线
+     c:图形上下文
+     cp1x:第一个控制点x坐标
+     cp1y:第一个控制点y坐标
+     cp2x:第二个控制点x坐标
+     cp2y:第二个控制点y坐标
+     x:结束点x坐标
+     y:结束点y坐标
+     */
     CGContextMoveToPoint(context, 50, 500);
     CGContextAddCurveToPoint(context, 150, 350, 250, 500, 300, 300);
     CGContextDrawPath(context, kCGPathStroke);
@@ -126,13 +140,13 @@
 /*图片绘制*/
 - (void)drawImage{
     UIImage *image = [UIImage imageNamed:@"IMG_1909"];
-    //从某一点开始绘制
-    //[image drawAtPoint:CGPointMake(50, 50)];
+    /*从某一点开始绘制*/
+    [image drawAtPoint:CGPointMake(50, 50)];
     
-    //绘制在指定的矩形区域内，如果大小不合适会进行拉伸
-    //[image drawInRect:CGRectMake(50, 50, kScreenWidth-100, 200)];
+    /*绘制在指定的矩形区域内，如果大小不合适会进行拉伸*/
+    [image drawInRect:CGRectMake(50, 50, kScreenWidth-100, 200)];
     
-    //平铺图片
+    /*平铺图片*/
     [image drawAsPatternInRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
 }
 
@@ -522,9 +536,6 @@ void drawTitle(void *info,CGContextRef context){
     
     CGContextRestoreGState(context);
 }
-
-
-
 
 @end
 

@@ -19,9 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self addDrawView];
-    //[self addImageView];
-    [self drawPDFMenthod];
+    //[self addDrawView];
+    [self addImageView];
+    //[self drawPDFMenthod];
 }
 
 - (void)addDrawView{
@@ -30,10 +30,11 @@
 }
 
 - (void)addImageView{
-    UIImage *image = [self drawBitmapWithName:@"IMG_1393"];
-    self.centerImageView.image = image;
     [self.view addSubview:self.centerImageView];
-    self.centerImageView.frame = CGRectMake(0, 0, 300, 300);
+    self.centerImageView.frame = CGRectMake(20, 200, 277, 182);
+    
+    UIImage *image = [self drawBitmapWithName:@"images3"];
+    self.centerImageView.image = image;
 }
 
 #pragma private Menthod
@@ -45,22 +46,22 @@
      */
     
     //获得一个位图上下文
-    UIGraphicsBeginImageContext(CGSizeMake(300, 300));
+    UIGraphicsBeginImageContext(CGSizeMake(277, 182));
     
     //注意绘图的位置是相对于画布顶点而言，不是屏幕
     UIImage *image = [UIImage imageNamed:imageName];
-    [image drawInRect:CGRectMake(0, 0, 300, 300)];
+    [image drawInRect:CGRectMake(0, 0, 277, 182)];
     CGFloat height = image.size.height;
     CGFloat width = image.size.width;
     
     //添加水印
     CGContextRef context = UIGraphicsGetCurrentContext();
-    NSString *str = @"呵呵呵...";
-    [str drawInRect:CGRectMake(width-100, height - 70, 100, 30) withAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Marker Felt" size:20],NSForegroundColorAttributeName : [UIColor blueColor]}];
-    CGContextMoveToPoint(context, width-100, height-70+30);
-    CGContextAddLineToPoint(context, width, height-70+30);
+    NSString *str = @"xueLiang_cao";
+    [str drawInRect:CGRectMake(width-120, height - 45, 110, 30) withAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Marker Felt" size:20],NSForegroundColorAttributeName : [UIColor redColor]}];
+    CGContextMoveToPoint(context, width-120, height-45+30);
+    CGContextAddLineToPoint(context, width - 10, height-45+30);
     CGContextSetLineWidth(context, 3);
-    CGContextSetStrokeColorWithColor(context, [UIColor greenColor].CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
     CGContextDrawPath(context, kCGPathStroke);
     
     //返回绘制的新图形
